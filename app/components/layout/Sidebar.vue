@@ -7,12 +7,18 @@
 			<NuxtImg
 				src="/logo.svg"
 				alt=""
-				width="100px"
+				width="140px"
 				class="mx-auto"
 			/>
 		</NuxtLink>
 
-		<UIButton>Click</UIButton>
+		<button class="absolute top-2 right-3 transition-colors hover:text-primary">
+			<Icon
+				name="line-md:logout"
+				size="20"
+			/>
+		</button>
+		<LayoutMenu />
 	</aside>
 </template>
 

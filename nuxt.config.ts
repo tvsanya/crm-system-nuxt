@@ -21,7 +21,8 @@ export default defineNuxtConfig({
 					}
 				}
 			}
-		]
+		],
+		'@nuxt/icon/module'
 	],
 	css: ['~/assets/css/tailwind.css'],
 	components: {
