@@ -12,7 +12,10 @@
 			/>
 		</NuxtLink>
 
-		<button class="absolute top-2 right-3 transition-colors hover:text-primary">
+		<button
+			class="absolute top-2 right-3 transition-colors hover:text-primary"
+			@click="logout"
+		>
 			<Icon
 				name="line-md:logout"
 				size="20"
@@ -22,6 +25,21 @@
 	</aside>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAuthStore, useIsLoadingStore } from '~/store/auth.store'
+
+const store = useAuthStore()
+const router = useRouter()
+
+const isLoadingStore = useIsLoadingStore()
+
+const logout = async () => {
+	isLoadingStore.set(true)
+	await account.deleteSession('current')
+	store.clear()
+	await router.push('/login')
+	isLoadingStore.set(false)
+}
+</script>
 
 <style scoped></style>
