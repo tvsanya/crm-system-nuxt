@@ -5,7 +5,14 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		optimizeDeps: {
-			include: ['@vueuse/core', 'class-variance-authority', 'cn', 'reka-ui']
+			include: [
+				'@tanstack/vue-query',
+				'@vueuse/core',
+				'class-variance-authority',
+				'cn',
+				'reka-ui',
+				'dayjs'
+			]
 		}
 	},
 	modules: [
