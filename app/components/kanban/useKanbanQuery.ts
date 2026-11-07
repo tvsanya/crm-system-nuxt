@@ -1,12 +1,16 @@
 import { COLLECTION_DEALS, DB_ID } from '@/types/app.constants.ts'
 import type { IDeal } from '@/types/deals.types'
 import { useQuery } from '@tanstack/vue-query'
+import { Query } from 'appwrite'
 import { KANBAN_DATA } from './kanban.data'
 
 export function useKanbanQuery() {
 	return useQuery({
 		queryKey: ['deals'],
-		queryFn: () => DB.listDocuments(DB_ID, COLLECTION_DEALS),
+		queryFn: () =>
+			DB.listDocuments(DB_ID, COLLECTION_DEALS, [
+				Query.select(['*', 'customers.*'])
+			]),
 		select(data) {
 			const newBoard = [...KANBAN_DATA]
 
@@ -20,7 +24,7 @@ export function useKanbanQuery() {
 						id: deal.$id,
 						name: deal.name,
 						price: deal.price,
-						companyName: deal.customer.name,
+						companyName: deal.customers.name ?? 'Не указана',
 						status: column.name
 					})
 				}
