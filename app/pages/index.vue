@@ -12,6 +12,10 @@
 						{{ column.name }}
 					</div>
 					<div>
+						<KanbanCreateDeal
+							:refetch="refetch"
+							:status="column.id"
+						/>
 						<UICard
 							v-for="card in column.items"
 							:key="card.id"
@@ -25,7 +29,8 @@
 								</UICardDescription>
 							</UICardHeader>
 							<UICardContent class="text-xs">
-								Компания {{ card.companyName }}
+								<div>Компания</div>
+								{{ card.companyName }}
 							</UICardContent>
 							<UICardFooter>
 								{{ dayjs(card.$createdAt).format('DD MMMM YYYY') }}

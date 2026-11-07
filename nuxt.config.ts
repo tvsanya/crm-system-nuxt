@@ -30,7 +30,13 @@ export default defineNuxtConfig({
 			}
 		],
 		'@nuxt/icon/module',
-		'@pinia/nuxt'
+		'@pinia/nuxt',
+		[
+			'@vee-validate/nuxt',
+			{
+				autoImports: true
+			}
+		]
 	],
 	css: ['~/assets/css/tailwind.css'],
 	components: {
